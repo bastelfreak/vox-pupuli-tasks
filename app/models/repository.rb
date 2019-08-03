@@ -4,6 +4,7 @@ class Repository < ApplicationRecord
   # the counterpart.
   has_many :pull_requests, primary_key: :github_id, foreign_key: :gh_repository_id, inverse_of: :repository
   has_many :open_pull_requests, -> { where(state: 'open') }, class_name: 'PullRequest', primary_key: :github_id, foreign_key: :gh_repository_id
+  has_many :forge_releases
 
   ##
   #  Checks if the given Repository name is in our application scope (a module)
